@@ -3,8 +3,8 @@
 PKG             := cgal
 $(PKG)_WEBSITE  := https://www.cgal.org/
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 4.11.1
-$(PKG)_CHECKSUM := fb152fc30f007e5911922913f8dc38e0bb969b534373ca0fbe85b4d872300e8b
+$(PKG)_VERSION  := 4.12
+$(PKG)_CHECKSUM := 442ef4fffb2ad6e4141e5a7902993ae6a4e73f7cb641fae1010bb586f6ca5e3f
 # using / in tag name means we have to set SUBDIR, FILE, URL
 $(PKG)_GH_CONF  := CGAL/cgal/tags, releases%2FCGAL-
 $(PKG)_SUBDIR   := CGAL-$($(PKG)_VERSION)
@@ -25,14 +25,4 @@ define $(PKG)_BUILD
 
     $(MAKE) -C '$(BUILD_DIR)' -j $(JOBS)
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install
-
-    mkdir '$(BUILD_DIR).test-tree'
-    cd '$(BUILD_DIR).test-tree' && '$(TARGET)-cmake' '$(SOURCE_DIR)/examples/AABB_tree'
-    $(MAKE) -C '$(BUILD_DIR).test-tree' -j $(JOBS)
-    $(INSTALL) '$(BUILD_DIR).test-tree/AABB_polyhedron_edge_example.exe' '$(PREFIX)/$(TARGET)/bin/test-cgal.exe'
-
-    mkdir '$(BUILD_DIR).test-image'
-    cd '$(BUILD_DIR).test-image' && '$(TARGET)-cmake' '$(SOURCE_DIR)/examples/CGALimageIO'
-    $(MAKE) -C '$(BUILD_DIR).test-image' -j $(JOBS)
-    $(INSTALL) '$(BUILD_DIR).test-image/convert_raw_image_to_inr.exe' '$(PREFIX)/$(TARGET)/bin/test-cgalimgio.exe'
 endef
