@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 80eaa54ef5fc687c9aeebb9bd24d936d3e6d2c6048f358be8b83fa088ef4b
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $($(PKG)_VERSION).tar.gz
 $(PKG)_URL      := $($(PKG)_WEBSITE)/archive/$($(PKG)_FILE)
-$(PKG)_DEPS     := gcc
+$(PKG)_DEPS     := cc
 
 define $(PKG)_BUILD
     # build and install the library
